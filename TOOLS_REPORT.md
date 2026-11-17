@@ -49,7 +49,7 @@ The project follows the KISS principle and prioritizes software design over comp
 - Privacy and security
 - Cost
 
-## 4. Testing Status
+## 4. lovable
 
 | Technology | Status |
 |---|---|
@@ -67,3 +67,43 @@ Actual test results will be documented after testing each technology.
 The proposed technologies support a simple development approach based on existing tools and services.
 
 Final technology selection will depend on practical testing results.
+
+## 6. Practical Experiment – Lovable
+
+Date: 17/11/2026
+
+### Experiment Description
+
+A simple Smart Classroom prototype was generated using Lovable with two interfaces: Student and Lecturer.
+
+### Test Results
+
+| Test | Result |
+|---|---|
+| Web application generation | PASS |
+| Student interface | PASS |
+| Lecturer interface | PASS |
+| Attendance registration | PASS |
+| Attendance counter | PASS |
+| Feedback submission | PASS |
+| Feedback display | PASS |
+| Student mobile preview | PASS |
+
+### Observations
+
+- The student Omar was successfully marked as present.
+- The attendance dashboard displayed 3 out of 5 students as present.
+- A new feedback message was successfully submitted and displayed.
+- The feedback counter increased from 2 to 3.
+- The student interface displayed correctly in mobile preview.
+
+### Limitations
+
+- The prototype uses temporary sample data.
+- No database or external API is connected.
+- Data persistence and real authentication are not implemented.
+- Testing on a physical mobile device is still pending.
+
+### Conclusion
+
+Lovable successfully generated a functional initial prototype and is suitable for further development of the teaching tool.
