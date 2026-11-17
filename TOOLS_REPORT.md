@@ -107,3 +107,24 @@ A simple Smart Classroom prototype was generated using Lovable with two interfac
 ### Conclusion
 
 Lovable successfully generated a functional initial prototype and is suitable for further development of the teaching tool.
+
+## YOLOv8 – Practical Experiment
+
+We tested YOLOv8n on a real classroom image (p3.jpeg) using Python and Ultralytics.
+
+| Parameter | Test 1 | Test 2 |
+|---|---|---|
+| Image size | 640 | 1280 |
+| Confidence threshold | 0.25 | 0.15 |
+| Detected persons | 12 | 25 |
+| Inference time | 37.6 ms | 161.7 ms |
+
+### Results
+
+Increasing the image resolution and reducing the confidence threshold increased the number of detected persons.
+
+However, the second experiment produced a false positive by detecting a person displayed on a laptop screen.
+
+### Conclusion
+
+YOLOv8 is a promising tool for automatic classroom occupancy estimation. However, further testing and validation are required before using it for attendance management. The detected person count does not establish individual student attendance.
