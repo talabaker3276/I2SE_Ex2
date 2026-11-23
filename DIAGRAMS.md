@@ -4,6 +4,9 @@
 
 ```mermaid
 classDiagram
+    User <|-- Student
+    User <|-- Lecturer
+
     class User {
         +String email
         +String name
@@ -14,33 +17,28 @@ classDiagram
         +markAttendance()
         +submitFeedback()
         +answerPoll()
+        +submitHomework()
+        +requestAIReview()
     }
 
     class Lecturer {
+        +createSession()
         +viewAttendance()
-        +uploadImage()
         +createPoll()
-        +openChallenge()
+        +createAssignment()
+        +publishSummary()
     }
 
     class Attendance {
-        +String studentEmail
-        +String lectureId
+        +String studentId
+        +String sessionId
         +String status
         +register()
-        +updateStatus()
     }
 
     class PeopleCounter {
         +detectPeople(image)
         +countPeople()
-    }
-
-    class Challenge {
-        +String lectureId
-        +String status
-        +submitLocation()
-        +resolveConflict()
     }
 
     class Feedback {
@@ -51,35 +49,53 @@ classDiagram
     class Poll {
         +String question
         +List options
-        +open()
-        +close()
-        +submitAnswer()
+        +submitVote()
+    }
+
+    class LectureSummary {
+        +String content
+        +String status
+        +publish()
+        +download()
+    }
+
+    class Assignment {
+        +String title
+        +Date deadline
+        +create()
+    }
+
+    class Submission {
+        +String content
+        +submit()
     }
 
     class AIService {
         +summarizeLecture()
-        +reviewAssignments()
+        +reviewHomework()
+        +compareSubmissions()
     }
 
     class ReportService {
         +exportCSV()
     }
 
-    User <|-- Student
-    User <|-- Lecturer
     Student --> Attendance
     Student --> Feedback
     Student --> Poll
-    Student --> Challenge
+    Student --> Submission
     Lecturer --> Attendance
     Lecturer --> PeopleCounter
-    Lecturer --> Challenge
     Lecturer --> Poll
-    Lecturer --> AIService
+    Lecturer --> Assignment
+    Lecturer --> LectureSummary
     Lecturer --> ReportService
+    Assignment --> Submission
+    AIService --> LectureSummary
+    AIService --> Submission
 ```
 
-## 2. Sequence Diagram – Attendance Registration
+## 2. Sequence Diagram – Attendance
 
 ```mermaid
 sequenceDiagram
@@ -88,74 +104,61 @@ sequenceDiagram
     participant Backend
     participant Database
 
-    Student->>WebApp: Scan QR and enter email
+    Student->>WebApp: Scan QR or enter session code
     WebApp->>Backend: Register attendance
-    Backend->>Database: Validate student
-    Database-->>Backend: Student found
+    Backend->>Database: Validate student and session
+    Database-->>Backend: Validation result
     Backend->>Database: Save attendance
-    Backend-->>WebApp: Success
-    WebApp-->>Student: Attendance confirmed
+    Backend-->>WebApp: Confirmation
+    WebApp-->>Student: Attendance registered
 ```
 
-## 3. Sequence Diagram – People Counting and Challenge
+## 3. Sequence Diagram – AI Lecture Summary
 
 ```mermaid
 sequenceDiagram
     actor Lecturer
     actor Student
-    participant WebApp
-    participant YOLO
-    participant Database
-
-    Lecturer->>WebApp: Upload classroom image
-    WebApp->>YOLO: Detect people
-    YOLO-->>WebApp: Count and bounding boxes
-    WebApp->>Database: Get attendance count
-    Database-->>WebApp: Registered count
-
-    alt Counts match
-        WebApp-->>Lecturer: Counts match
-    else Counts differ
-        WebApp-->>Lecturer: Mismatch detected
-        Lecturer->>WebApp: Open challenge
-        Student->>WebApp: Select location in image
-        WebApp->>Database: Save selection
-        Lecturer->>WebApp: Review and resolve conflicts
-    end
-```
-
-## 4. Sequence Diagram – Student Feedback
-
-```mermaid
-sequenceDiagram
-    actor Student
-    participant WebApp
-    participant Database
-    actor Lecturer
-
-    Student->>WebApp: Submit feedback
-    WebApp->>Database: Save feedback
-    WebApp-->>Student: Confirmation
-    Lecturer->>WebApp: View feedback
-    WebApp->>Database: Retrieve feedback
-    Database-->>WebApp: Feedback list
-    WebApp-->>Lecturer: Display feedback
-```
-
-## 5. Sequence Diagram – AI Analysis
-
-```mermaid
-sequenceDiagram
-    actor Lecturer
     participant WebApp
     participant AIService
+    participant Database
 
-    Lecturer->>WebApp: Upload transcript or repository list
-    WebApp->>AIService: Request analysis
-    AIService-->>WebApp: Generated reports
-    WebApp-->>Lecturer: Display results
+    Lecturer->>WebApp: Upload recording or transcript
+    WebApp->>AIService: Generate summary
+    AIService-->>WebApp: Structured summary
+    WebApp-->>Lecturer: Display draft
+    Lecturer->>WebApp: Publish summary
+    WebApp->>Database: Save published summary
+    Student->>WebApp: View summaries
+    WebApp->>Database: Retrieve published summaries
+    Database-->>WebApp: Summary
+    WebApp-->>Student: Display and download
 ```
 
-## 6. Design Summary
+## 4. Sequence Diagram – AI Homework Review
 
-The diagrams describe the proposed system architecture and interactions between the main software components. They represent the planned system rather than only the initial prototype.
+```mermaid
+sequenceDiagram
+    actor Student
+    actor Lecturer
+    participant WebApp
+    participant Database
+    participant AIService
+
+    Lecturer->>WebApp: Create assignment
+    WebApp->>Database: Save assignment
+    Student->>WebApp: Submit text or PDF
+    WebApp->>Database: Save submission
+    Student->>WebApp: Request AI review
+    WebApp->>AIService: Analyze submission
+    AIService-->>WebApp: Detailed feedback
+    WebApp-->>Student: Display AI review
+    Lecturer->>WebApp: Request homework review
+    WebApp->>AIService: Analyze submission
+    AIService-->>WebApp: Detailed feedback
+    WebApp-->>Lecturer: Display AI review
+```
+
+## 5. Design Summary
+
+These diagrams describe the main components and interactions of the Smart Classroom prototype. They are simplified design models rather than an exact representation of the generated source code.
