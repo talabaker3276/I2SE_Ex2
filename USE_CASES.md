@@ -1,74 +1,56 @@
 # Use Cases – Smart Classroom
 
 ## UC1 – Register Attendance
-
 **Actor:** Student
 
-**Main Flow:**
-1. The student opens the web application.
-2. The student enters their email address.
-3. The student clicks Mark Attendance.
-4. The system validates the student.
-5. The system updates the attendance record.
+1. The student logs into the web application.
+2. The student scans a QR code or enters a session code.
+3. The system validates and records attendance.
+4. Duplicate registrations are prevented.
 
-**Alternative Flow:** If the email is invalid or attendance is already registered, the system displays a message.
-
-## UC2 – View Attendance
-
+## UC2 – Manage Attendance
 **Actor:** Lecturer
 
-**Main Flow:**
-1. The lecturer opens the dashboard.
-2. The system displays registered students.
-3. The lecturer views attendance status.
-4. The lecturer exports the attendance report as a CSV file.
+1. The lecturer creates an attendance session.
+2. The system generates a QR code and session code.
+3. The lecturer views attendance records.
+4. Attendance data can be exported as CSV.
 
 ## UC3 – Count People
-
 **Actor:** Lecturer
 
-**Main Flow:**
-1. The lecturer uploads a classroom image.
-2. YOLO processes the image.
-3. The system detects people.
-4. The system displays the estimated number of people.
+1. The lecturer uploads a classroom photo.
+2. YOLOv8 detects and counts people.
+3. The system displays the estimated count.
+4. The lecturer compares the count with registered attendance.
 
 ## UC4 – Submit Feedback
-
-**Actor:** Student
-
-**Main Flow:**
-1. The student opens the feedback section.
-2. The student writes a comment or suggestion.
-3. The student submits the feedback.
-4. The lecturer can view the feedback.
-
-## UC5 – Classroom Poll
-
-**Actors:** Lecturer and Student
-
-**Main Flow:**
-1. The lecturer creates a poll.
-2. Students submit their answers.
-3. The system collects the answers.
-4. The lecturer views the results.
-
-## UC6 – Generate Lecture Summary
-
-**Actor:** Lecturer
-
-**Main Flow:**
-1. The lecturer provides a recorded lecture.
-2. The AI component processes the lecture content.
-3. The system generates a summary.
-4. The lecturer views the summary.
-
-## UC7 – Homework Review
-
 **Actors:** Student and Lecturer
 
-**Main Flow:**
-1. The student submits homework.
-2. The LLM analyzes the submission.
-3. The system generates feedback and comparisons.
-4. The authorized users view the results.
+1. The student submits a comment or suggestion.
+2. The system stores the feedback.
+3. The lecturer views the feedback.
+
+## UC5 – Live Poll
+**Actors:** Lecturer and Student
+
+1. The lecturer creates a multiple-choice poll.
+2. Students submit their votes.
+3. The lecturer views the results.
+
+## UC6 – AI Lecture Summary
+**Actors:** Lecturer and Student
+
+1. The lecturer uploads a recording or transcript.
+2. AI generates a structured lecture summary.
+3. The lecturer reviews and publishes the summary.
+4. Students view and download the published summary.
+
+## UC7 – AI Homework Review
+**Actors:** Lecturer and Student
+
+1. The lecturer creates a homework assignment.
+2. Students submit solutions as text or PDF.
+3. Students and lecturers request detailed AI reviews.
+4. AI identifies mistakes, strengths, and improvements.
+5. The system supports anonymous comparisons between submissions from the same assignment.
