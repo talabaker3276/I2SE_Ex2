@@ -1,69 +1,46 @@
-# I2SE Exercise 2 – Web-Based Teaching Tool
+# I2SE Exercise 2 – Smart Classroom
 
 ## Project Overview
-
-This project aims to design a simple web-based teaching tool that improves interaction between lecturers and students during and after lectures.
-
-The main focus is software design, simplicity, usability, and the use of existing technologies rather than complex implementation.
-
-## Problem Statement
-
-Lecturers need an efficient way to manage attendance, collect student feedback, conduct polls, analyze lectures, and review student assignments.
+Smart Classroom is a mobile-friendly web application designed to improve classroom attendance, student engagement, and AI-assisted learning.
 
 ## Main Features
 
 ### 1. Attendance Management
-- Students identify themselves using their email addresses.
-- Students register their attendance using a QR code.
-- The lecturer uploads a classroom photo.
-- The system counts the people in the photo.
-- If a mismatch is detected, the lecturer can initiate an attendance challenge.
-- Students identify themselves by clicking on their location in the photo.
-- The lecturer can manually resolve conflicts.
-- Attendance reports can be exported as spreadsheets.
+- Students mark attendance using QR codes or session codes.
+- Lecturers manage attendance and export CSV reports.
+- YOLOv8 counts people in classroom photos without facial recognition.
 
 ### 2. Student Feedback
-- Students can submit text comments during or after lectures.
-- Lecturers can view and export feedback.
+- Students submit comments and suggestions.
+- Lecturers view student feedback.
 
 ### 3. Live Polls
-- Lecturers can create simple multiple-choice polls.
-- Students can submit answers while the poll is open.
-- Lecturers can view the results.
+- Lecturers create multiple-choice polls.
+- Students vote and lecturers view results.
 
-### 4. AI-Based Lecture Analysis
-- Lecturers can upload lecture recordings or transcripts.
-- The system generates a short report with summaries and suggestions for improvement.
+### 4. AI Lecture Summaries
+- Lecturers upload recordings or transcripts.
+- AI generates summaries that lecturers can edit and publish.
+- Students can view and download published summaries.
 
-### 5. AI-Based Assignment Review
-- The system receives a list of assignment repository links.
-- Existing AI tools analyze and compare submissions.
-- An individual review report is generated for each assignment.
+### 5. AI Homework Review
+- Lecturers create assignments.
+- Students submit solutions as text or PDF.
+- AI provides detailed reviews, identifies mistakes, and suggests improvements.
+- The system supports anonymous comparisons between submissions.
 
 ## Design Principles
-
 - KISS – Keep It Simple.
-- Mobile-friendly web application.
-- Clear and precise use cases.
-- Reuse existing software and AI tools.
-- Human intervention when necessary.
+- Responsive web application.
 - Privacy and data protection.
+- Reuse of existing AI technologies.
 
-## Project Scope
-
-The project focuses on physical classroom attendance and simple teaching tools.
-
-Biometric face recognition, remote attendance, and integration with university systems are outside the project scope.
-
-## Implementation Approach
-
-The application is planned to be developed using Lovable and existing software services.
+## Implementation
+Built using Lovable, with AI-powered learning features and YOLOv8 people counting.
 
 ## Project Status
-
-Currently in the design and planning phase.
+Functional prototype tested with lecturer and student workflows. Peer comparisons require further testing.
 
 ## Course
-
-Introduction to Software Engineering  
-Exercise 2 – Ariel University
+Introduction to Software Engineering – Ariel University  
+Exercise 2
