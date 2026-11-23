@@ -1,116 +1,39 @@
-# Technical Tools Report
+# Technical Tools Report – Smart Classroom
 
 ## 1. Objective
+Evaluate existing technologies for developing a simple, mobile-friendly teaching application using the KISS principle.
 
-The objective of this report is to evaluate existing technologies for building a simple, reliable, and mobile-friendly teaching tool.
+## 2. Technologies
 
-The project follows the KISS principle and prioritizes software design over complex implementation.
+| Technology | Purpose | Status |
+|---|---|---|
+| Lovable | Web application development | Tested |
+| Database & Authentication | User accounts and data storage | Functional workflows tested |
+| YOLOv8 | Classroom people counting | Tested |
+| QR Code | Attendance registration | Tested |
+| AI Services | Lecture summaries and homework reviews | Tested |
+| CSV | Attendance data export | Implemented; file verification pending |
 
-## 2. Proposed Technologies
+## 3. Lovable Experiment
 
-### Lovable
-- Purpose: Building the web application and user interfaces.
-- Advantage: Rapid development using AI-generated code.
-- Test: Create a mobile-friendly prototype with student and lecturer interfaces.
+**Date:** 17/11/2026
 
-### Supabase
-- Purpose: Database management and email authentication.
-- Advantage: Provides existing backend services.
-- Test: Register a test user and store an attendance record.
+A Smart Classroom prototype was developed using Lovable with student and lecturer dashboards.
 
-### YOLO
-- Purpose: Person detection and counting in classroom photos.
-- Advantage: Counts people without identifying their personal identity.
-- Test: Compare detected people with a manual count using classroom photos.
-- Limitation: Detection accuracy may decrease due to distance, lighting, or occlusion.
+**Results:**
+- Attendance registration worked.
+- Lecturer attendance records updated.
+- Student feedback was submitted and displayed.
+- The mobile interface was displayed successfully.
+- Live polls were tested.
+- AI lecture summaries were generated, published, and downloaded.
+- Homework submissions received detailed AI reviews.
 
-### QR Code
-- Purpose: Quick access to lecture attendance registration.
-- Advantage: Simple interaction using a smartphone.
-- Test: Generate and scan a QR code linked to a lecture.
+**Conclusion:** Lovable enabled rapid development of a functional web application.
 
-### Gemini API
-- Purpose: AI-based lecture analysis and assignment review.
-- Advantage: Reuses an existing AI service.
-- Test: Analyze a short lecture transcript and compare sample assignment repositories.
-- Limitation: AI-generated reports may contain errors and require human review.
+## 4. YOLOv8 Experiment
 
-### CSV
-- Purpose: Export attendance, feedback, and poll results.
-- Advantage: Simple format compatible with Microsoft Excel and Google Sheets.
-- Test: Export sample records and open the generated file.
-
-## 3. Evaluation Criteria
-
-- Ease of use
-- Implementation complexity
-- Reliability
-- Mobile compatibility
-- Privacy and security
-- Cost
-
-## 4. lovable
-
-| Technology | Status |
-|---|---|
-| Lovable | Pending |
-| Supabase | Pending |
-| YOLO | Pending |
-| QR Code | Pending |
-| Gemini API | Pending |
-| CSV | Pending |
-
-Actual test results will be documented after testing each technology.
-
-## 5. Preliminary Conclusion
-
-The proposed technologies support a simple development approach based on existing tools and services.
-
-Final technology selection will depend on practical testing results.
-
-## 6. Practical Experiment – Lovable
-
-Date: 17/11/2026
-
-### Experiment Description
-
-A simple Smart Classroom prototype was generated using Lovable with two interfaces: Student and Lecturer.
-
-### Test Results
-
-| Test | Result |
-|---|---|
-| Web application generation | PASS |
-| Student interface | PASS |
-| Lecturer interface | PASS |
-| Attendance registration | PASS |
-| Attendance counter | PASS |
-| Feedback submission | PASS |
-| Feedback display | PASS |
-| Student mobile preview | PASS |
-
-### Observations
-
-- The student Omar was successfully marked as present.
-- The attendance dashboard displayed 3 out of 5 students as present.
-- A new feedback message was successfully submitted and displayed.
-- The feedback counter increased from 2 to 3.
-- The student interface displayed correctly in mobile preview.
-
-### Limitations
-
-- The prototype uses temporary sample data.
-- No database or external API is connected.
-- Data persistence and real authentication are not implemented.
-- Testing on a physical mobile device is still pending.
-
-### Conclusion
-
-Lovable successfully generated a functional initial prototype and is suitable for further development of the teaching tool.
-
-## YOLOv8 – Practical Experiment
-
-We tested YOLOv8n on a real classroom image (p3.jpeg) using Python and Ultralytics.
+YOLOv8n was tested using Python and Ultralytics on a classroom image (`p3.jpeg`).
 
 | Parameter | Test 1 | Test 2 |
 |---|---|---|
@@ -119,12 +42,29 @@ We tested YOLOv8n on a real classroom image (p3.jpeg) using Python and Ultralyti
 | Detected persons | 12 | 25 |
 | Inference time | 37.6 ms | 161.7 ms |
 
-### Results
+Increasing image resolution and reducing the confidence threshold increased detections. However, a false positive occurred when a person on a laptop screen was detected.
 
-Increasing the image resolution and reducing the confidence threshold increased the number of detected persons.
+**Conclusion:** YOLOv8 is useful for estimating classroom occupancy but cannot independently verify student identities.
 
-However, the second experiment produced a false positive by detecting a person displayed on a laptop screen.
+## 5. AI Experiments
 
-### Conclusion
+- Generated a Hebrew lecture summary from recorded audio.
+- Published the summary to the student dashboard.
+- Successfully downloaded the published summary.
+- Submitted a Python homework solution.
+- AI identified a logical error involving negative numbers.
+- Both student and lecturer received detailed AI feedback.
 
-YOLOv8 is a promising tool for automatic classroom occupancy estimation. However, further testing and validation are required before using it for attendance management. The detected person count does not establish individual student attendance.
+Anonymous homework comparison requires additional testing with multiple submissions.
+
+## 6. Limitations
+
+- YOLOv8 accuracy depends on image quality and visibility.
+- AI-generated feedback may contain inaccuracies.
+- Homework comparisons have not been tested with two submissions.
+- Exported CSV content requires verification.
+- The exact AI provider and backend configuration should be confirmed from the project settings.
+
+## 7. Conclusion
+
+The experiments demonstrate that existing web and AI technologies can support the Smart Classroom application. The main features were implemented and tested through practical user workflows.
