@@ -41,6 +41,10 @@ Access the Smart Classroom application here:
 
 [Smart Classroom – Live Demo](https://id-preview--7d4efd83-235d-403c-8d98-618bcbd35a36.lovable.app/?__lovable_receipt=mat_2jzp17htk89rg8hdfvgjrszc6f)
 
+## video explane
+
+https://drive.google.com/file/d/1y6IwzrJsXr6aqYrxiNNrm5wLydLYC9Au/view?usp=sharing
+
 ## Implementation
 Built using Lovable, with AI-powered learning features and YOLOv8 people counting.
 
